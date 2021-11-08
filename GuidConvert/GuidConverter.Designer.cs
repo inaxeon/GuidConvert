@@ -37,12 +37,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnNativePaste = new System.Windows.Forms.Button();
+            this.btnNativeCopy = new System.Windows.Forms.Button();
+            this.btnHexCopy = new System.Windows.Forms.Button();
+            this.btnHexPaste = new System.Windows.Forms.Button();
+            this.btnCCopy = new System.Windows.Forms.Button();
+            this.btnCPaste = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtC
             // 
             this.txtC.Location = new System.Drawing.Point(12, 111);
             this.txtC.Name = "txtC";
+            this.txtC.ReadOnly = true;
             this.txtC.Size = new System.Drawing.Size(447, 20);
             this.txtC.TabIndex = 2;
             // 
@@ -50,6 +57,7 @@
             // 
             this.txtHex.Location = new System.Drawing.Point(12, 68);
             this.txtHex.Name = "txtHex";
+            this.txtHex.ReadOnly = true;
             this.txtHex.Size = new System.Drawing.Size(447, 20);
             this.txtHex.TabIndex = 1;
             // 
@@ -57,6 +65,7 @@
             // 
             this.txtGuid.Location = new System.Drawing.Point(12, 29);
             this.txtGuid.Name = "txtGuid";
+            this.txtGuid.ReadOnly = true;
             this.txtGuid.Size = new System.Drawing.Size(447, 20);
             this.txtGuid.TabIndex = 0;
             // 
@@ -117,11 +126,77 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // btnNativePaste
+            // 
+            this.btnNativePaste.Location = new System.Drawing.Point(465, 29);
+            this.btnNativePaste.Name = "btnNativePaste";
+            this.btnNativePaste.Size = new System.Drawing.Size(53, 21);
+            this.btnNativePaste.TabIndex = 7;
+            this.btnNativePaste.Text = "Paste";
+            this.btnNativePaste.UseVisualStyleBackColor = true;
+            this.btnNativePaste.Click += new System.EventHandler(this.btnNativePaste_Click);
+            // 
+            // btnNativeCopy
+            // 
+            this.btnNativeCopy.Location = new System.Drawing.Point(524, 29);
+            this.btnNativeCopy.Name = "btnNativeCopy";
+            this.btnNativeCopy.Size = new System.Drawing.Size(53, 21);
+            this.btnNativeCopy.TabIndex = 8;
+            this.btnNativeCopy.Text = "Copy";
+            this.btnNativeCopy.UseVisualStyleBackColor = true;
+            this.btnNativeCopy.Click += new System.EventHandler(this.btnNativeCopy_Click);
+            // 
+            // btnHexCopy
+            // 
+            this.btnHexCopy.Location = new System.Drawing.Point(524, 68);
+            this.btnHexCopy.Name = "btnHexCopy";
+            this.btnHexCopy.Size = new System.Drawing.Size(53, 21);
+            this.btnHexCopy.TabIndex = 10;
+            this.btnHexCopy.Text = "Copy";
+            this.btnHexCopy.UseVisualStyleBackColor = true;
+            this.btnHexCopy.Click += new System.EventHandler(this.btnHexCopy_Click);
+            // 
+            // btnHexPaste
+            // 
+            this.btnHexPaste.Location = new System.Drawing.Point(465, 68);
+            this.btnHexPaste.Name = "btnHexPaste";
+            this.btnHexPaste.Size = new System.Drawing.Size(53, 21);
+            this.btnHexPaste.TabIndex = 9;
+            this.btnHexPaste.Text = "Paste";
+            this.btnHexPaste.UseVisualStyleBackColor = true;
+            this.btnHexPaste.Click += new System.EventHandler(this.btnHexPaste_Click);
+            // 
+            // btnCCopy
+            // 
+            this.btnCCopy.Location = new System.Drawing.Point(524, 111);
+            this.btnCCopy.Name = "btnCCopy";
+            this.btnCCopy.Size = new System.Drawing.Size(53, 21);
+            this.btnCCopy.TabIndex = 12;
+            this.btnCCopy.Text = "Copy";
+            this.btnCCopy.UseVisualStyleBackColor = true;
+            this.btnCCopy.Click += new System.EventHandler(this.btnCCopy_Click);
+            // 
+            // btnCPaste
+            // 
+            this.btnCPaste.Location = new System.Drawing.Point(465, 111);
+            this.btnCPaste.Name = "btnCPaste";
+            this.btnCPaste.Size = new System.Drawing.Size(53, 21);
+            this.btnCPaste.TabIndex = 11;
+            this.btnCPaste.Text = "Paste";
+            this.btnCPaste.UseVisualStyleBackColor = true;
+            this.btnCPaste.Click += new System.EventHandler(this.btnCPaste_Click);
+            // 
             // GuidConverter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 179);
+            this.ClientSize = new System.Drawing.Size(588, 179);
+            this.Controls.Add(this.btnCCopy);
+            this.Controls.Add(this.btnCPaste);
+            this.Controls.Add(this.btnHexCopy);
+            this.Controls.Add(this.btnHexPaste);
+            this.Controls.Add(this.btnNativeCopy);
+            this.Controls.Add(this.btnNativePaste);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.label3);
@@ -152,6 +227,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnNativePaste;
+        private System.Windows.Forms.Button btnNativeCopy;
+        private System.Windows.Forms.Button btnHexCopy;
+        private System.Windows.Forms.Button btnHexPaste;
+        private System.Windows.Forms.Button btnCCopy;
+        private System.Windows.Forms.Button btnCPaste;
     }
 }
 

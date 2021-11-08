@@ -37,47 +37,59 @@ namespace GuidConvert
                              .ToArray();
         }
 
+        private void ConvertGuid()
+        {
+            try
+            {
+                var fromType = GetFromType();
+                Guid guid = Guid.Empty;
+
+                if (fromType == FromType.Invalid)
+                {
+                    MessageBox.Show("No input, or too many inputs, Enter only one input", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                switch (fromType)
+                {
+                    case FromType.Guid:
+                        guid = Guid.Parse(txtGuid.Text);
+                        break;
+                    case FromType.Hex:
+                        var bytes = StringToByteArray(txtHex.Text);
+                        guid = new Guid(bytes);
+                        break;
+                    case FromType.C:
+                        guid = Guid.ParseExact(txtC.Text, "X");
+                        break;
+                }
+
+                switch (fromType)
+                {
+                    case FromType.Guid:
+                        SetHexGuid(guid);
+                        SetCGuid(guid);
+                        break;
+                    case FromType.Hex:
+                        SetTextGuid(guid);
+                        SetCGuid(guid);
+                        break;
+                    case FromType.C:
+                        SetTextGuid(guid);
+                        SetHexGuid(guid);
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Invalid input", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Clear();
+            }
+        }
+
         private void btnConvert_Click(object sender, EventArgs e)
         {
-            var fromType = GetFromType();
-            Guid guid = Guid.Empty;
-
-            if (fromType == FromType.Invalid)
-            {
-                MessageBox.Show("No input, or too many inputs, Enter only one input", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            switch (fromType)
-            {
-                case FromType.Guid:
-                    guid = Guid.Parse(txtGuid.Text);
-                    break;
-                case FromType.Hex:
-                    var bytes = StringToByteArray(txtHex.Text);
-                    guid = new Guid(bytes);
-                    break;
-                case FromType.C:
-                    guid = Guid.ParseExact(txtC.Text, "X");
-                    break;
-            }
-
-            switch (fromType)
-            {
-                case FromType.Guid:
-                    SetHexGuid(guid);
-                    SetCGuid(guid);
-                    break;
-                case FromType.Hex:
-                    SetTextGuid(guid);
-                    SetCGuid(guid);
-                    break;
-                case FromType.C:
-                    SetTextGuid(guid);
-                    SetHexGuid(guid);
-                    break;
-            }
-
+            ConvertGuid();
         }
 
         void SetTextGuid(Guid guid)
@@ -137,16 +149,60 @@ namespace GuidConvert
             return FromType.Invalid;
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
+        private void Clear()
         {
             txtGuid.Text = "";
             txtHex.Text = "";
             txtC.Text = "";
         }
 
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnNativePaste_Click(object sender, EventArgs e)
+        {
+            Clear();
+            txtGuid.Text = Clipboard.GetText();
+            ConvertGuid();
+        }
+
+        private void btnNativeCopy_Click(object sender, EventArgs e)
+        {
+            txtGuid.SelectAll();
+            txtGuid.Copy();
+        }
+
+        private void btnHexPaste_Click(object sender, EventArgs e)
+        {
+            Clear();
+            txtHex.Text = Clipboard.GetText();
+            ConvertGuid();
+        }
+
+        private void btnHexCopy_Click(object sender, EventArgs e)
+        {
+            txtHex.SelectAll();
+            txtHex.Copy();
+        }
+
+        private void btnCPaste_Click(object sender, EventArgs e)
+        {
+            Clear();
+            txtC.Text = Clipboard.GetText();
+            ConvertGuid();
+        }
+
+        private void btnCCopy_Click(object sender, EventArgs e)
+        {
+            txtC.SelectAll();
+            txtC.Copy();
         }
     }
 }
